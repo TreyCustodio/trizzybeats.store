@@ -51,7 +51,10 @@
     font-weight: bold;
     text-align: center;
     font-family: 'Garamond';
-    font-size: 24px;
+    font-size: 36px;
+    color:white;
+    text-shadow: -1px -1px rgb(200, 0, 0), 1px -1px rgb(200, 0, 0), 1px 1px rgb(200, 0, 0), -1px 1px rgb(50, 0, 0),;
+    padding-bottom:12px;
 }
 
 /* My Bio */
@@ -60,6 +63,7 @@
     font-family: 'Garamond';
     font-size: 18px;
     padding-bottom: 2px;
+    color: white;
 }
 
 .toDo {
