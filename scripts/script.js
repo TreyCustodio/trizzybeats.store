@@ -5,7 +5,6 @@
 
 /**
  * Animated Class that represents a glowing object.
- * Not used in this project.
  */
 class Animated {
   constructor(element, nFrames, fps) {
@@ -137,134 +136,9 @@ class Animated {
 /**
  * Webpage Elements/Triggers
  */
-const start = document.getElementById("start")
-const module_1 = document.getElementById("module_1")
-const titles = document.querySelectorAll("#title")
-const quizSection = document.getElementById("quiz-section")
-
-if (quizSection) {
-  quizSection.style.pointerEvents = "none";
-  const inputs = quizSection.querySelectorAll('input');
-  inputs.forEach(i => i.disabled = true);
-
-  const submitBtn = quizSection.querySelector('#quiz-submit');
-  if (submitBtn) submitBtn.disabled = true;
-}
-
-
-// A dictionary of each quiz, the correct response, and the next progress bar value
-const quizConfig = {
-  1: { correctAnswer: 'd', nextProgress: 30 },
-  2: { correctAnswer: 'b', nextProgress: 60 },
-  3: { correctAnswer: 'a', nextProgress: 85 },
-  4: { correctAnswer: 'c', nextProgress: 100 }
-};
-
-/**
- * Quiz initialization
- */
-function initializeQuizzes() {
-  for (let quizNum = 1; quizNum <= 4; quizNum++) {
-    const quizSection = document.getElementById(`quiz-section-${quizNum}`);
-    const submitBtn = document.getElementById(`quiz-submit-${quizNum}`);
-    
-    if (quizSection) {
-      quizSection.style.pointerEvents = "none";
-      const inputs = quizSection.querySelectorAll('input');
-      inputs.forEach(i => i.disabled = true);
-      if (submitBtn) submitBtn.disabled = true;
-    }
-    
-    if (submitBtn) {
-      submitBtn.addEventListener('click', () => handleQuizSubmit(quizNum));
-    }
-  }
-}
-
-/**
- * Handle the submit button
- */
-function handleQuizSubmit(quizNum) {
-  const selected = document.querySelector(`input[name="answer-${quizNum}"]:checked`);
-  
-  if (!selected) {
-    alert('Wählen Sie eine Option');
-    return;
-  }
-  
-  const config = quizConfig[quizNum];
-  const currentModule = document.getElementById(`module_${quizNum}`);
-  const nextModule = document.getElementById(`module_${quizNum + 1}`);
-  
-  if (selected.value === config.correctAnswer) {
-    alert('Genau!');
-    progress_percentage = config.nextProgress;
-    update_progress_bar();
-    
-    if (currentModule) {
-      currentModule.classList.remove('visible');
-      currentModule.style.pointerEvents = 'none';
-    }
-    
-    setTimeout(() => {
-      if (nextModule) {
-        nextModule.classList.add('visible');
-
-        // Enable next quiz
-        enableQuiz(quizNum + 1);
-      }
-    }, 500);
-    
-    if (nextModule) {
-      scroll_to(nextModule);
-    }
-  } else {
-    alert('Falsch.');
-  }
-}
-
-/**
- * Activate a quiz based on the number
- */
-function enableQuiz(quizNum) {
-  const quizSection = document.getElementById(`quiz-section-${quizNum}`);
-  if (quizSection) {
-    quizSection.style.pointerEvents = "auto";
-    const inputs = quizSection.querySelectorAll('input');
-    inputs.forEach(i => i.disabled = false);
-    const submitBtn = quizSection.querySelector('.quiz-submit');
-    if (submitBtn) submitBtn.disabled = false;
-  }
-}
-
-
-initializeQuizzes();
-
-if (start) {
-  const handleStartClick = function(event){
-    start.removeEventListener("click", handleStartClick);
-    start.style.opacity = "0";
-    start.style.pointerEvents = "none";
-    progress_percentage = 10;
-    update_progress_bar();
-    
-    // Fade out titles
-    titles.forEach(title => {
-      title.style.opacity = "0";
-      title.style.pointerEvents = "none";
-    });
-
-    // Show module_1 after start button finishes fading; then enable first quiz
-    setTimeout(() => {
-      if (module_1) {
-        module_1.classList.add("visible");
-      }
-      enableQuiz(1); // Enable first quiz
-    }, 500);
-  };
-  start.addEventListener("click", handleStartClick);
-}
-
+const beats = document.getElementById('beats')
+const search = document.getElementById('search')
+const about = document.getElementById('about')
 
 
 /**
@@ -274,18 +148,6 @@ function scroll_to(element){
   element.scrollIntoView({ behavior: 'smooth' });
 }
 
-
-/**
- * Progress Bar
- */
-let progress_percentage = 0; // Variable to define progress bar percentage (0-100)
-
-function update_progress_bar() {
-  const progressBar = document.getElementById('progress-bar');
-  if (progressBar) {
-    progressBar.style.width = progress_percentage + '%';
-  }
-}
 
 
 /**
