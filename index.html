@@ -26,14 +26,18 @@
             </div>
 
             <div class = "overlay_item">
-               <button id="beats">Beats</button>
+               <!-- <button id="beats">Beats</button> -->
+               <text id = "beats" style="color: white">Beats</text>
             </div>
 
             <div class = "overlay_item">
-               <button id="search">Search</button>
+               <!-- <button id="search">Search</button> -->
+               <text id = "search" style="color: white">Search</text>
             </div>
+
             <div class = "overlay_item">
-               <button id="about">About</button>
+               <!-- <button id="about">About</button> -->
+               <text id = "about" style="color: white">About</text>
             </div>
 
          </div>
@@ -43,7 +47,7 @@
 
 
       <!--Main-->
-      <main>
+      <main style="color:white">
          
          <!--  Landing Page -->
          <div class="name" id="title">
@@ -55,9 +59,32 @@
          </div>
          
          <div class ="featured" id = "featured">
-            <text>Featured Beats</text>
-            <audio controls src="beats/05.wav"></audio>
+            <div class = "beat_guide">
+               <text></text>
+               <text>Name</text>
+               <text>Bpm</text>
+            </div>
+
+            <div class = "beat" id = "0">
+               <img class="controls" id = "play_bio" src="images/play.png">
+               <text>Biotech</text>
+               <text>70</text>
+            </div>
+
+            <div class = "beat" id= "1">
+               <img class="controls" id = "play_frozen" src="images/play.png">
+               <text>Frozen Core</text>
+               <text>70</text>
+            </div>
+
+            <div class = "beat" id = "2">
+               <img class="controls" id = "play_plants" src="images/play.png">
+               <text>Fake Plants Don't Grow</text>
+               <text>164</text>
+            </div>
+
          </div>
+
          <script src="scripts/script.js"></script>
          
       </main>

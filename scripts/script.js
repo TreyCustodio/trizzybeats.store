@@ -136,10 +136,26 @@ class Animated {
 /**
  * Webpage Elements/Triggers
  */
-const beats = document.getElementById('beats')
-const search = document.getElementById('search')
-const about = document.getElementById('about')
+const beats = document.getElementById('beats');
+const search = document.getElementById('search');
+const about = document.getElementById('about');
 
+const audio_1 = new Audio("beats/Biotech.wav");
+const frozen_core = new Audio("beats/Frozen_Core.wav");
+const plants = new Audio("beats/Fake_Plants_Don't_Grow.wav");
+
+let audio = [audio_1, frozen_core, plants]
+let play_buttons = [
+  document.getElementById("play_bio"),
+  document.getElementById("play_frozen"),
+  document.getElementById("play_plants")
+  ]
+
+let sections = []
+
+for (let i = 0; i < 3; i++) {
+  sections.push(document.getElementById(i.toString()))
+}
 
 /**
  * Scroll to the desired section
@@ -148,6 +164,46 @@ function scroll_to(element){
   element.scrollIntoView({ behavior: 'smooth' });
 }
 
+function press_play(playButton, audioElem, section){
+  // Play the audio if paused
+  if (audioElem.paused){
+    // Pause all other audios playing
+    for (let i = 0; i < 3; i++) {
+
+      if (audio[i].paused) {
+        continue
+      }
+
+      else {
+        audio[i].pause()
+        play_buttons[i].src = "images/play.png"
+        sections[i].style.backgroundColor = "rgb(0, 0, 0)";
+
+      }
+    }
+
+    // Play the audio
+    audioElem.play();
+    playButton.src = "images/pause.png";
+    audioElem.loop = true;
+    section.style.backgroundColor = "rgb(160, 0, 0)";
+
+  }
+
+  // Pause the audio if playing
+  else {
+    audioElem.pause();
+    playButton.src = "images/play.png"
+    section.style.backgroundColor = "rgb(0,0,0)"
+  }
+}
+
+/**
+ * Event Listeners
+ */
+for (let i = 0; i <= 3; i++) {
+  play_buttons[i].addEventListener("click", (event) => press_play(play_buttons[i], audio[i], sections[i]));
+}
 
 
 /**

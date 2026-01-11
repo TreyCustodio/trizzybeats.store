@@ -155,272 +155,85 @@
     background-color: rgb(0,0,0);
     display: flex;
     width: 100vw;
+    top:0%;
 }
 
 .overlay img {
     width: 50%;
     height: auto;
+    padding-top:16px;
 }
 
 .overlay_item {
     padding-left: 20px;
     justify-content: center;
+    padding-top:16px;
 }
 
 .overlay_home {
     justify-content: left;
 }
 
-.navigation button {
-    display: flex; 
-    align-content: center;
-    visibility: visible;
-    
-}
-
-.navigation button:hover {
-    color: red;
-}
-
-.navigation text {
-    display: flex;
-    left: 50%;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
-
-
-
 /* Beat Section */
-.beat_container {
-    padding-top: 20px;
-}
-
-
-
-.beat_link:hover {
-    color: purple
-}
-
-.beat_container_title{
-    font-weight: bold;
-    text-align: center;
-    font-family: 'Garamond';
-    font-size: 24px
-}
-
-.beat_container_description{
-    text-align: center;
-    font-family: 'Garamond';
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-/* Reference to Alucard in beat section */
-.alucard {
-    font-style: italic;
-    font-size: 12pt
-}
-
-.alucard:hover {
-    font-style: italic;
-    font-size: 12pt;
-    color: red
-}
-
-.beat_title {
-    text-align: center;
-    display: block;
-    font-size: 16pt;
-    font-family: 'Times New Roman';
-    color: white;
-    text-shadow: -1px -1px black, 1px -1px black, 1px 1px black, -1px 1px black;
-    padding-bottom: 4px
-}
-
-
-
-.beat_section {
-    display: block;
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-bottom: 10px;
-    font-size: 18pt;
-    font-family: 'Times New Roman';
-    font-style: italic;
-    border-top: 1px dashed black;
-}
-
-.audio_container {
-    column-gap: 20px;
-    columns: 2;
-    column-fill: auto;
-}
-
-
-
-.beat_section_desc {
-    text-align: left;
-    display: block;
-    font-size: 12pt;
-    font-family: 'Times New Roman';
-    font-style: normal;
-}
-
 .beat{
-    text-align: center;
-    display: block;
-    padding-top: 16px;
-    padding-bottom: 20px
-
-}
-
-
-
-/* Specifications for a game section title */
-.game_container {
-    padding-top: 20px;
-    background-color: #D2DEFF;
-}
-
-.game_container_title {
-    font-weight: bold;
-    text-align: center;
-    font-family: 'Garamond';
-    font-size: 36px
-}
-
-.game_container_title{
-    font-weight: bold;
-    text-align: center;
-    font-family: 'Garamond';
-    font-size: 24px
-}
-
-.game_container_description{
-    text-align: center;
-    font-family: 'Garamond';
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-/* Specifications for a game window */
-.game {
-    margin: 4px 0 0 4px;
-    box-shadow: 0 0 0 2px #000000, 0 0 0 3px #ffffff;
-}
-
-/* Progress Bar */
-.progress-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #e0e0e0;
-    z-index: 9999;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.progress-bar {
-    height: 8px;
-    width: 0%;
-    background: linear-gradient(90deg, #4CAF50, #45a049);
-    transition: width 0.3s ease;
-}
-
-/* Module 1 - hidden initially, fades in */
-/* #module_1 {
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#module_1.visible {
-    opacity: 1;
-} */
-
-/* Module 1 - hidden initially, fades in */
-.module {
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none; /* don't block clicks/hover when hidden */
-    z-index: 1;
-}
-
-.module.visible {
-    opacity: 1;
-    pointer-events: auto; /* enable interaction when visible */
-}
-
-/* Ensure start button is above module so hover works */
-#start {
-    position: relative;
-    z-index: 2;
-}
-
-
-/* Title fade-out */
-#title {
-    transition: opacity 0.5s ease-out;
-}
-
-/* Multiple Choice Quiz */
-.quiz-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 200px 256px 64px;
     align-items: center;
-    justify-content: center;
-    margin: 40px 0;
-    padding: 30px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    column-gap: 12px;
+    padding-top: 16px;
+    padding-bottom: 20px;
+    padding-left:12px;
+
+    border-bottom: 1px solid rgb(50,50,50)
 }
 
-.quiz-question {
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Garamond';
-    margin-bottom: 20px;
-    text-align: center;
+.beat_guide{
+    display: grid;
+    grid-template-columns: 220px 256px 28px;
+    align-items: center;
+    column-gap: 12px;
+    padding-top: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+
 }
 
-.quiz-choices {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
+.beat_guide text{
+    display: block;
 }
 
-.choice {
-    font-size: 16px;
-    font-family: 'Garamond';
+.beat_guide text:nth-of-type(1){
+    justify-self: start;
+}
+
+.beat_guide text:nth-of-type(3){
+    justify-self: end;
+}
+
+/* Layout the play image, name, and number into three columns */
+.beat text{
+    display: block;
+}
+
+.beat text:nth-of-type(1){
+    justify-self: start;
+}
+
+.beat text:nth-of-type(3){
+    justify-self: end;
+}
+
+
+.controls {
+    width: 20%;
+    height: auto;
+}
+
+.controls:hover {
     cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-.choice:hover {
-    background-color: #e0e0e0;
-}
-
-.choice input[type="radio"] {
-    margin-right: 10px;
-    cursor: pointer;
-}
 
 .basic_image {
     width: 100%;
