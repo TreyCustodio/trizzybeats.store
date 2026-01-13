@@ -1,7 +1,13 @@
 # Trizzy Beats Store
-A cite for users to purchase high-quality background music at a cheap price.
+A site for users to purchase high-quality background music at a cheap price.
 Here you'll find energetic beats made to get your body moving as well as mellow melodies crafted to ease your mind in a steady flow.
 
-## Usability
+## Services
 - No product will cost more than $5.
-- Each user can purchase 1 free beat.
+- $20 for 1 on 1 customization
+
+##  Beats
+Image (with play button), Title, BPM, Duration
+
+##  Bottom of screen displays current beat playing
+- same format as beat section

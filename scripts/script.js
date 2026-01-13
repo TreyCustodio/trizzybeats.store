@@ -14,23 +14,24 @@ class Animated {
     this.frame = 0;
     this.animation_timer = 0.0;
     this.element = element
+    this.animate = false
 
 
     //  RGB info
-    this.r = 210;
+    this.r = 160;
     this.g = 222;
     this.b = 255;
     this.delta = 6;
     this.rgb_string = "rgb(0,0,0)";
-    this.max = 255;
+    this.max = 160;
     this.min = 50;
 
     //  States
     this.brightening = false;
     this.background_set = true;
     this.update_r = true;
-    this.update_g = true;
-    this.update_b = true;
+    this.update_g = false;
+    this.update_b = false;
 
   }
 
@@ -46,6 +47,9 @@ class Animated {
 
   update(delta) {
     
+    if (not (this.animate)){
+      return
+    }
 
     //  Increment animation timer
     this.animation_timer += delta;
@@ -64,7 +68,7 @@ class Animated {
           this.frame %= this.nFrames;
 
           if (this.frame == 0){
-            this.set_background_color("rgb(210, 222, 255)");
+            this.set_background_color("rgb(0,0,0)");
             this.background_set = true;
           }
         }
@@ -136,75 +140,151 @@ class Animated {
 /**
  * Webpage Elements/Triggers
  */
+const track_count = 5;
 const beats = document.getElementById('beats');
 const search = document.getElementById('search');
 const about = document.getElementById('about');
 
+
+
 const audio_1 = new Audio("beats/Biotech.wav");
 const frozen_core = new Audio("beats/Frozen_Core.wav");
 const plants = new Audio("beats/Fake_Plants_Don't_Grow.wav");
+const over = new Audio("beats/Overground.wav");
+const pump = new Audio("beats/Pump_me_up.wav");
 
-let audio = [audio_1, frozen_core, plants]
-let play_buttons = [
-  document.getElementById("play_bio"),
-  document.getElementById("play_frozen"),
-  document.getElementById("play_plants")
-  ]
 
+let audio = [audio_1, frozen_core, plants, over, pump]
+
+// let audio = []
+// for (let i = 0; i < 4; i++) {
+//   audio.push(new Audio("beats/" + i.toString() + ".wav"))
+// }
+
+let play_buttons = []
+for (let i = 0; i < track_count; i++) {
+  play_buttons.push(document.getElementById("play_" + i.toString()))
+}
+
+// Fix this section to animate the track backgrounds
 let sections = []
-
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < track_count; i++) {
+  // sections.push(new Animated(document.getElementById(i.toString()), 64, 60))
   sections.push(document.getElementById(i.toString()))
 }
 
+
 /**
- * Scroll to the desired section
+ * Event Listeners for play buttons ------------------
+ * click, mouse enter, mouse leave
+ */
+for (let i = 0; i < track_count; i++) {
+  // play_buttons[i].addEventListener("click", (event) => press_play(i));
+  // play_buttons[i].addEventListener("mouseenter", (event) => play_hover(i));
+  // play_buttons[i].addEventListener("mouseleave", (event) => play_leave(i));
+
+  sections[i].addEventListener("click", (event) => press_play(i));
+  sections[i].addEventListener("mouseenter", (event) => play_hover(i));
+  sections[i].addEventListener("mouseleave", (event) => play_leave(i));
+}
+
+
+
+/**
+ * Functions ---------------------------------------
+ */
+
+/**
+ * Function that scrolls to the desired section of the document
+ * @param element the element to scroll to
  */
 function scroll_to(element){
   element.scrollIntoView({ behavior: 'smooth' });
 }
 
-function press_play(playButton, audioElem, section){
+
+/**
+ * Function called when the play button is pressed
+ * @param {} i the index of the event taking place
+ */
+function press_play(i) {
+  // Define necessary variables
+  let audioElem = audio[i];
+  let playButton = play_buttons[i];
+  let section = sections[i];
+
   // Play the audio if paused
   if (audioElem.paused){
     // Pause all other audios playing
-    for (let i = 0; i < 3; i++) {
-
-      if (audio[i].paused) {
+    for (let j = 0; j < track_count; j++) {
+      if (audio[j].paused) {
         continue
       }
 
       else {
-        audio[i].pause()
-        play_buttons[i].src = "images/play.png"
-        sections[i].style.backgroundColor = "rgb(0, 0, 0)";
-
+        audio[j].pause()
+        play_buttons[j].src = "images/play.png"
+        // sections[j].animate = false;
+        // sections[j].set_background_color("rgb(0, 0, 0)");
+        sections[j].style.backgroundColor = "rgb(0,0,0)"
       }
     }
 
     // Play the audio
     audioElem.play();
-    playButton.src = "images/pause.png";
     audioElem.loop = true;
-    section.style.backgroundColor = "rgb(160, 0, 0)";
+    playButton.src = "images/pause_hover.png";
+    section.style.backgroundColor = "rgb(160,0,0)"
+
+    // section.animate = true;
+    // section.set_background_color("rgb(160, 0, 0)");
 
   }
 
   // Pause the audio if playing
   else {
     audioElem.pause();
-    playButton.src = "images/play.png"
-    section.style.backgroundColor = "rgb(0,0,0)"
+    playButton.src = "images/play_hover.png"
+    // section.animate = false;
+    // section.set_background_color("rgb(0, 0, 0)");
+      section.style.backgroundColor = "rgb(0,0,0)"
+
   }
 }
 
 /**
- * Event Listeners
+ * Function called when a play button is being hovered over
+ * @param {*} i the index of the play button
  */
-for (let i = 0; i <= 3; i++) {
-  play_buttons[i].addEventListener("click", (event) => press_play(play_buttons[i], audio[i], sections[i]));
+function play_hover(i) {
+  if (audio[i].paused){
+    play_buttons[i].src = "images/play_hover.png"
+  }
+
+  else {
+    play_buttons[i].src = "images/pause_hover.png"
+  }
+
+  sections[i].style.backgroundColor = "rgb(160,0,0)"
+
 }
 
+/**
+ * Function called when the mouse leaves the play button area
+ * @param {*} i the index of the play button
+ */
+function play_leave(i) {
+  if (audio[i].paused){
+    play_buttons[i].src = "images/play.png"
+  }
+  
+  else {
+    play_buttons[i].src = "images/pause.png"
+  }
+
+  sections[i].style.backgroundColor = "rgb(0,0,0)"
+
+}
 
 /**
  * Driver Code
@@ -216,7 +296,10 @@ function main() {
     const now = performance.now();
     const deltaSec = (now - last_time) / 1000;
     last_time = now;
-    color.update(deltaSec);
+    for (let i = 0; i < track_count; i++) {
+      continue
+      // sections[i].update(deltaSec);
+    }
   }, 16);
 
   return
