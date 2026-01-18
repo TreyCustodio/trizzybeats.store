@@ -140,7 +140,7 @@ class Animated {
 /**
  * Webpage Elements/Triggers
  */
-const track_count = 5;
+const track_count = 7;
 const beats = document.getElementById('beats');
 const search = document.getElementById('search');
 const about = document.getElementById('about');
@@ -151,10 +151,14 @@ const audio_1 = new Audio("beats/Biotech.wav");
 const frozen_core = new Audio("beats/Frozen_Core.wav");
 const plants = new Audio("beats/Fake_Plants_Don't_Grow.wav");
 const over = new Audio("beats/Overground.wav");
-const pump = new Audio("beats/Pump_me_up.wav");
+const pump = new Audio("beats/Pump_me_up_full.wav");
+const pump_1 = new Audio("beats/Pump_me_up_pt_1.wav");
+const pump_2 = new Audio("beats/Pump_me_up_pt_2.wav");
 
 
-let audio = [audio_1, frozen_core, plants, over, pump]
+
+
+let audio = [audio_1, frozen_core, plants, over, pump, pump_1, pump_2];
 
 // let audio = []
 // for (let i = 0; i < 4; i++) {
