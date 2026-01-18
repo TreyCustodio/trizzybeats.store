@@ -140,13 +140,13 @@ class Animated {
 /**
  * Webpage Elements/Triggers
  */
+// Metadata
 const track_count = 7;
 const beats = document.getElementById('beats');
 const search = document.getElementById('search');
 const about = document.getElementById('about');
 
-
-
+// Audio files
 const audio_1 = new Audio("beats/Biotech.wav");
 const frozen_core = new Audio("beats/Frozen_Core.wav");
 const plants = new Audio("beats/Fake_Plants_Don't_Grow.wav");
@@ -157,19 +157,26 @@ const pump_2 = new Audio("beats/Pump_me_up_pt_2.wav");
 
 
 
-
+/**
+ * Initialize the audio elements
+ */
 let audio = [audio_1, frozen_core, plants, over, pump, pump_1, pump_2];
-
 // let audio = []
 // for (let i = 0; i < 4; i++) {
 //   audio.push(new Audio("beats/" + i.toString() + ".wav"))
 // }
 
+/**
+ * Initialize the play buttons
+ */
 let play_buttons = []
 for (let i = 0; i < track_count; i++) {
   play_buttons.push(document.getElementById("play_" + i.toString()))
 }
 
+/**
+ * Initialize the sections of the document
+ */
 // Fix this section to animate the track backgrounds
 let sections = []
 for (let i = 0; i < track_count; i++) {
@@ -179,8 +186,7 @@ for (let i = 0; i < track_count; i++) {
 
 
 /**
- * Event Listeners for play buttons ------------------
- * click, mouse enter, mouse leave
+ * Event Listeners for each beat's section contained in sections
  */
 for (let i = 0; i < track_count; i++) {
   // play_buttons[i].addEventListener("click", (event) => press_play(i));
@@ -212,14 +218,14 @@ function scroll_to(element){
  * @param {} i the index of the event taking place
  */
 function press_play(i) {
-  // Define necessary variables
+  // Get references to relevant elements in the document
   let audioElem = audio[i];
   let playButton = play_buttons[i];
   let section = sections[i];
 
-  // Play the audio if paused
+  // If paused: play the audio
   if (audioElem.paused){
-    // Pause all other audios playing
+    // First pause all other audios playing
     for (let j = 0; j < track_count; j++) {
       if (audio[j].paused) {
         continue
@@ -228,24 +234,23 @@ function press_play(i) {
       else {
         audio[j].pause()
         play_buttons[j].src = "images/play.png"
+        sections[j].style.backgroundColor = "rgb(0,0,0)"
         // sections[j].animate = false;
         // sections[j].set_background_color("rgb(0, 0, 0)");
-        sections[j].style.backgroundColor = "rgb(0,0,0)"
       }
     }
 
-    // Play the audio
+    // Then play the audio
     audioElem.play();
     audioElem.loop = true;
     playButton.src = "images/pause_hover.png";
     section.style.backgroundColor = "rgb(160,0,0)"
-
     // section.animate = true;
     // section.set_background_color("rgb(160, 0, 0)");
 
   }
 
-  // Pause the audio if playing
+  // If the audio is playing: pause it
   else {
     audioElem.pause();
     playButton.src = "images/play_hover.png"
