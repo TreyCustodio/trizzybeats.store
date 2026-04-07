@@ -3,6 +3,8 @@
  * Author - Trey Custodio
  */
 
+// import WaveSurfer from 'wavesurfer.js'
+
 /**
  * Animated Class that represents a glowing object.
  */
@@ -137,28 +139,48 @@ class Animated {
 
 
 
+
+
+
 /**
- * Webpage Elements/Triggers
+ * ================ Webpage Elements/Triggers ===========================
  */
+
 // Metadata
-const track_count = 7;
-const beats = document.getElementById('beats');
-const search = document.getElementById('search');
-const about = document.getElementById('about');
+const track_count = 8;
+const beats       = document.getElementById('beats');
+const search      = document.getElementById('search');
+const about       = document.getElementById('about');
+const body        = document.getElementById('body');
+const overlay     = document.getElementById('over');
+
 
 // Audio files
-const audio_1 = new Audio("beats/Biotech.wav");
+const audio_1     = new Audio("beats/Biotech.wav");
 const frozen_core = new Audio("beats/Frozen_Core.wav");
-const plants = new Audio("beats/Fake_Plants_Don't_Grow.wav");
-const over = new Audio("beats/Overground.wav");
-const pump = new Audio("beats/Pump_me_up_full.wav");
-const pump_1 = new Audio("beats/Pump_me_up_pt_1.wav");
-const pump_2 = new Audio("beats/Pump_me_up_pt_2.wav");
+const plants      = new Audio("beats/Fake_Plants_Don't_Grow.wav");
+const over        = new Audio("beats/Overground.wav");
+const pump        = new Audio("beats/Pump_me_up_full.wav");
+const pump_1      = new Audio("beats/Pump_me_up_pt_1.wav");
+const pump_2      = new Audio("beats/Pump_me_up_pt_2.wav");
+const bn2         = new Audio("beats/Black-And-White.wav");
+
+// Body Animation Variables
+let body_increasing = true;
+let body_red        = 0;
+let body_max        = 30;
+let body_min        = 0;
+let body_fps        = 2;
+let body_timer      = 0.0;
+
+
+
+
 
 
 
 /**
- * Initialize the audio elements
+ * ================ Initialize the audio elements =======================
  */
 let audio = [audio_1, frozen_core, plants, over, pump, pump_1, pump_2];
 // let audio = []
@@ -201,7 +223,7 @@ for (let i = 0; i < track_count; i++) {
 
 
 /**
- * Functions ---------------------------------------
+ * ================ Functions ===========================================
  */
 
 /**
@@ -218,6 +240,10 @@ function scroll_to(element){
  * @param {} i the index of the event taking place
  */
 function press_play(i) {
+  // Go to the next page
+  window.location.href = 'pages/frozen_core/index.html';
+  return;
+
   // Get references to relevant elements in the document
   let audioElem = audio[i];
   let playButton = play_buttons[i];
@@ -242,9 +268,10 @@ function press_play(i) {
 
     // Then play the audio
     audioElem.play();
+    document.getElementById("currently_playing").style.visibility = "visible";
     audioElem.loop = true;
     playButton.src = "images/pause_hover.png";
-    section.style.backgroundColor = "rgb(160,0,0)"
+    section.style.backgroundColor = "rgb(160,0,0)";
     // section.animate = true;
     // section.set_background_color("rgb(160, 0, 0)");
 
@@ -253,10 +280,12 @@ function press_play(i) {
   // If the audio is playing: pause it
   else {
     audioElem.pause();
-    playButton.src = "images/play_hover.png"
+    document.getElementById("currently_playing").style.visibility = "hidden";
+    playButton.src = "images/play_hover.png";
+    section.style.backgroundColor = "rgb(0,0,0)";
+
     // section.animate = false;
     // section.set_background_color("rgb(0, 0, 0)");
-      section.style.backgroundColor = "rgb(0,0,0)"
 
   }
 }
@@ -266,16 +295,7 @@ function press_play(i) {
  * @param {*} i the index of the play button
  */
 function play_hover(i) {
-  if (audio[i].paused){
-    play_buttons[i].src = "images/play_hover.png"
-  }
-
-  else {
-    play_buttons[i].src = "images/pause_hover.png"
-  }
-
-  sections[i].style.backgroundColor = "rgb(160,0,0)"
-
+  sections[i].style.backgroundColor = "rgb(160,0,0)";
 }
 
 /**
@@ -283,16 +303,43 @@ function play_hover(i) {
  * @param {*} i the index of the play button
  */
 function play_leave(i) {
-  if (audio[i].paused){
-    play_buttons[i].src = "images/play.png"
+  sections[i].style.backgroundColor = "rgb(" + body_red + ",0,0)";
+}
+
+
+function update_background(delta) {
+
+  body_timer = body_timer + delta
+  if (body_timer >= 1/body_fps) {
+    // Reset timer
+    body_timer = 0.0;
+
+    // Set the color
+    body.style.backgroundColor = "rgb(" + body_red + ",0,0)";
+    overlay.style.backgroundColor = "rgb(" + body_red + ",0,0)";
+    for (let i = 0; i < track_count; i++) {
+      sections[i].style.backgroundColor = "rgb(" + body_red + ",0,0)";
+    }
+
+    // Increase the brightness
+    if (body_increasing) {
+      body_red ++;
+      if (body_red == body_max) {
+        body_increasing = false;
+      }
+    }
+
+    // Decrease the brightness
+    else {
+      body_red --;
+      if (body_red == body_min) {
+        body_increasing = true;
+      }
+    }
   }
+
   
-  else {
-    play_buttons[i].src = "images/pause.png"
-  }
-
-  sections[i].style.backgroundColor = "rgb(0,0,0)"
-
+  
 }
 
 /**
@@ -301,15 +348,23 @@ function play_leave(i) {
 function main() {
   // Get the time in between the last frame and the current frame
   let last_time = performance.now();
+
   setInterval(() => {
     const now = performance.now();
     const deltaSec = (now - last_time) / 1000;
     last_time = now;
+
+    // Update elements inside for loop
     for (let i = 0; i < track_count; i++) {
-      continue
+      update_background(deltaSec)
       // sections[i].update(deltaSec);
+      continue
     }
+
   }, 16);
+
+  // Play with background color
+  
 
   return
 }
