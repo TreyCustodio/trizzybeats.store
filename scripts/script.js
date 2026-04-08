@@ -151,6 +151,14 @@ const beatData = [
   },
 
   {
+    id: "1.1",
+    title: "Chill Trap",
+    bpm: 160,
+    image: "pages/chill_trap/cover.jpg",
+    page: "chill_trap"
+  },
+
+  {
     id: "2",
     title: "Frozen Core",
     bpm: 70,
