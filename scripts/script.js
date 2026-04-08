@@ -144,10 +144,34 @@ class Animated {
 const beatData = [
   {
     id: "1",
+    title: "Ocarina Trap",
+    bpm: 160,
+    image: "pages/ocarina_trap/ocarina.jpg",
+    page: "ocarina_trap"
+  },
+
+  {
+    id: "2",
     title: "Frozen Core",
     bpm: 70,
-    image: "images/night.png",
+    image: "pages/frozen_core/night.png",
     page: "frozen_core"
+  },
+
+  {
+    id: "3",
+    title: "Biotech Ruins",
+    bpm: 140,
+    image: "pages/biotech/cover.png",
+    page: "biotech"
+  },
+
+  {
+    id: "4",
+    title: "Pump Me Up",
+    bpm: 140,
+    image: "pages/pump_full/cover.png",
+    page: "pump_full"
   },
 
 ];
