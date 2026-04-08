@@ -212,6 +212,16 @@
     border-bottom: 1px solid rgb(50,50,50)
 }
 
+.beat:hover{
+    color:red;
+    cursor:pointer;
+}
+
+/* .beat text:hover {
+    color:red;
+    cursor:default;
+} */
+
 .beat_guide{
     display: grid;
     grid-template-columns: 220px 256px 28px;
@@ -249,10 +259,7 @@
     justify-self: end;
 }
 
-.beat text:hover {
-    color:red;
-    cursor:default;
-}
+
 
 .controls {
     width: 20%;
