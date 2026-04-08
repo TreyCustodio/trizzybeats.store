@@ -208,8 +208,18 @@
     padding-top: 16px;
     padding-bottom: 20px;
     padding-left:12px;
+    border-bottom: 1px solid rgb(50,50,50);
+}
 
-    border-bottom: 1px solid rgb(50,50,50)
+.beat img {
+    width: 25%;
+    height: auto;
+    margin-left: 128px;
+}
+
+.beat text{
+    display: block;
+    font-size: 16pt;
 }
 
 .beat:hover{
@@ -217,10 +227,6 @@
     cursor:pointer;
 }
 
-/* .beat text:hover {
-    color:red;
-    cursor:default;
-} */
 
 .beat_guide{
     display: grid;
@@ -247,9 +253,7 @@
 }
 
 /* Layout the play image, name, and number into three columns */
-.beat text{
-    display: block;
-}
+
 
 .beat text:nth-of-type(1){
     justify-self: start;

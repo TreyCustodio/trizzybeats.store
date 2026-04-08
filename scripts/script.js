@@ -152,7 +152,7 @@ const beatData = [
 
   {
     id: "1.1",
-    title: "Chill Trap",
+    title: "Born to Trap, Dying to Rap",
     bpm: 160,
     image: "pages/chill_trap/cover.jpg",
     page: "chill_trap"
@@ -168,7 +168,7 @@ const beatData = [
 
   {
     id: "3",
-    title: "Biotech Ruins",
+    title: "Biotech",
     bpm: 140,
     image: "pages/biotech/cover.png",
     page: "biotech"

@@ -148,67 +148,27 @@ const beats       = document.getElementById('beats');
 const search      = document.getElementById('search');
 const about       = document.getElementById('about');
 const body        = document.getElementById('body');
+let _animate      = false;
 
 // Audio files
-const audio_1     = new Audio("beats/Biotech.wav");
-const frozen_core = new Audio("beats/Frozen_Core.wav");
-const plants      = new Audio("beats/Fake_Plants_Don't_Grow.wav");
-const over        = new Audio("beats/Overground.wav");
-const pump        = new Audio("beats/Pump_me_up_full.wav");
-const pump_1      = new Audio("beats/Pump_me_up_pt_1.wav");
-const pump_2      = new Audio("beats/Pump_me_up_pt_2.wav");
-const bn2         = new Audio("beats/Black-And-White.wav");
+const audio       = new Audio("Chill-Trap.wav");
+
 
 // Body Animation Variables
 let body_increasing = true;
 let body_red        = 0;
-let body_max        = 150;
+let body_max        = 120;
 let body_min        = 0;
-let body_fps        = 4;
+let body_fps        = 64;
 let body_timer      = 0.0;
 
+// Play Button
+const play = document.getElementById("play")
+play.addEventListener("click", (event) => press_play());
+play.addEventListener("mouseenter", (event) => play_hover());
+play.addEventListener("mouseleave", (event) => play_leave());
 
 
-/**
- * ================ Initialize the audio elements =======================
- */
-let audio = [audio_1, frozen_core, plants, over, pump, pump_1, pump_2];
-// let audio = []
-// for (let i = 0; i < 4; i++) {
-//   audio.push(new Audio("beats/" + i.toString() + ".wav"))
-// }
-
-/**
- * Initialize the play buttons
- */
-let play_buttons = []
-for (let i = 0; i < track_count; i++) {
-  play_buttons.push(document.getElementById("play_" + i.toString()))
-}
-
-/**
- * Initialize the sections of the document
- */
-// Fix this section to animate the track backgrounds
-let sections = []
-for (let i = 0; i < track_count; i++) {
-  // sections.push(new Animated(document.getElementById(i.toString()), 64, 60))
-  sections.push(document.getElementById(i.toString()))
-}
-
-
-/**
- * Event Listeners for each beat's section contained in sections
- */
-for (let i = 0; i < track_count; i++) {
-  // play_buttons[i].addEventListener("click", (event) => press_play(i));
-  // play_buttons[i].addEventListener("mouseenter", (event) => play_hover(i));
-  // play_buttons[i].addEventListener("mouseleave", (event) => play_leave(i));
-
-  sections[i].addEventListener("click", (event) => press_play(i));
-  sections[i].addEventListener("mouseenter", (event) => play_hover(i));
-  sections[i].addEventListener("mouseleave", (event) => play_leave(i));
-}
 
 
 
@@ -227,54 +187,24 @@ function scroll_to(element){
 
 /**
  * Function called when the play button is pressed
- * @param {} i the index of the event taking place
  */
-function press_play(i) {
-  // Go to the next page
-
+function press_play() {
   // Get references to relevant elements in the document
-  let audioElem = audio[i];
-  let playButton = play_buttons[i];
-  let section = sections[i];
+  let audioElem = audio;
 
   // If paused: play the audio
   if (audioElem.paused){
-    // First pause all other audios playing
-    for (let j = 0; j < track_count; j++) {
-      if (audio[j].paused) {
-        continue
-      }
-
-      else {
-        audio[j].pause()
-        play_buttons[j].src = "images/play.png"
-        sections[j].style.backgroundColor = "rgb(0,0,0)"
-        // sections[j].animate = false;
-        // sections[j].set_background_color("rgb(0, 0, 0)");
-      }
-    }
-
-    // Then play the audio
     audioElem.play();
-    document.getElementById("currently_playing").style.visibility = "visible";
     audioElem.loop = true;
-    playButton.src = "images/pause_hover.png";
-    section.style.backgroundColor = "rgb(160,0,0)";
-    // section.animate = true;
-    // section.set_background_color("rgb(160, 0, 0)");
-
+    _animate = true;
+    play.src = "pause.png";
   }
 
   // If the audio is playing: pause it
   else {
     audioElem.pause();
-    document.getElementById("currently_playing").style.visibility = "hidden";
-    playButton.src = "images/play_hover.png";
-    section.style.backgroundColor = "rgb(0,0,0)";
-
-    // section.animate = false;
-    // section.set_background_color("rgb(0, 0, 0)");
-
+    play.src = "play.png";
+    _animate = false;
   }
 }
 
@@ -283,16 +213,13 @@ function press_play(i) {
  * @param {*} i the index of the play button
  */
 function play_hover(i) {
-  if (audio[i].paused){
-    play_buttons[i].src = "images/play_hover.png"
+  if (audio.paused){
+    play.src = "play_hover.png";
   }
 
   else {
-    play_buttons[i].src = "images/pause_hover.png"
+    play.src = "pause_hover.png";
   }
-
-  sections[i].style.backgroundColor = "rgb(160,0,0)"
-
 }
 
 /**
@@ -300,15 +227,13 @@ function play_hover(i) {
  * @param {*} i the index of the play button
  */
 function play_leave(i) {
-  if (audio[i].paused){
-    play_buttons[i].src = "images/play.png"
-  }
-  
-  else {
-    play_buttons[i].src = "images/pause.png"
+  if (audio.paused){
+    play.src = "play.png";
   }
 
-  sections[i].style.backgroundColor = "rgb(0,0,0)"
+  else {
+    play.src = "pause.png";
+  }
 }
 
 
@@ -356,10 +281,8 @@ function main() {
     last_time = now;
 
     // Update elements inside for loop
-    for (let i = 0; i < track_count; i++) {
-      update_background(deltaSec)
-      // sections[i].update(deltaSec);
-      continue
+    if (_animate) {
+      update_background(deltaSec);
     }
 
   }, 16);
