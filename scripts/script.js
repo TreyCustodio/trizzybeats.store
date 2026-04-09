@@ -143,6 +143,14 @@ class Animated {
 
 const beatData = [
   {
+    id: "0",
+    title: "Earth's Revival",
+    bpm: 89,
+    image: "pages/earths_revival/cover.png",
+    page: "earths_revival"
+  },
+
+  {
     id: "1",
     title: "Ocarina Trap",
     bpm: 160,
