@@ -147,7 +147,9 @@ const beatData = [
     title: "Earth's Revival",
     bpm: 89,
     image: "pages/earths_revival/cover.png",
-    page: "earths_revival"
+    page: "earths_revival",
+    dur: "2:46",
+    tags: "Video Game"
   },
 
   {
@@ -155,23 +157,53 @@ const beatData = [
     title: "Ocarina Trap",
     bpm: 160,
     image: "pages/ocarina_trap/ocarina.jpg",
-    page: "ocarina_trap"
+    page: "ocarina_trap",
+    dur: "2:59",
+    tags: "Trap"
+
+  },
+
+  {
+    id: "1.2",
+    title: "EDM no. 1",
+    bpm: 160,
+    image: "pages/edm_1/cover.png",
+    page: "edm_1",
+    dur: "2:15",
+    tags: "EDM"
   },
 
   {
     id: "1.1",
-    title: "Born to Trap, Dying to Rap",
+    title: "Born to Trap",
     bpm: 160,
     image: "pages/chill_trap/cover.jpg",
-    page: "chill_trap"
+    page: "chill_trap",
+    dur: "2:15",
+    tags: "Trap"
   },
 
+  
+
+  // {
+  //   id: "2.0",
+  //   title: "Sleepwalking",
+  //   bpm: 70,
+  //   image: "pages/frozen_core/night.png",
+  //   page: "frozen_core",
+  //   dur: "2:03",
+  //   tags: "Video Game, Ice"
+  // },
+
   {
-    id: "2",
+    id: "2.1",
     title: "Frozen Core",
     bpm: 70,
     image: "pages/frozen_core/night.png",
-    page: "frozen_core"
+    page: "frozen_core",
+    dur: "2:03",
+    tags: "Video Game"
+
   },
 
   {
@@ -179,7 +211,9 @@ const beatData = [
     title: "Biotech",
     bpm: 140,
     image: "pages/biotech/cover.png",
-    page: "biotech"
+    page: "biotech",
+    dur: "1:49",
+    tags: "Video Game"
   },
 
   {
@@ -187,7 +221,9 @@ const beatData = [
     title: "Pump Me Up",
     bpm: 140,
     image: "pages/pump_full/cover.png",
-    page: "pump_full"
+    page: "pump_full",
+    dur: "2:48",
+    tags: "Video Game"
   },
 
 ];
@@ -210,6 +246,8 @@ function renderBeats(arr) {
       <img class="controls" src="${beat.image}">
       <text>${beat.title}</text>
       <text>${beat.bpm}</text>
+      <text>${beat.dur}</text>
+
     `;
     
     featuredContainer.appendChild(beatDiv);
@@ -244,44 +282,11 @@ let body_timer      = 0.0;
 
 
 
-/**
- * ================ Initialize the audio elements =======================
- */
-
-/**
- * Initialize the play buttons
- */
-// let play_buttons = []
-// for (let i = 0; i < beatData.length; i++) {
-//   play_buttons.push(document.getElementById("play_" + i.toString()))
-// }
-
-
-/**
- * Initialize the sections of the document
- */
-// Fix this section to animate the track backgrounds
-// let sections = []
-// for (let i = 0; i < beatData.length; i++) {
-//   alert(i);
-//   sections.push(document.getElementById(i.toString()));
-// }
-
-
-/**
- * Event Listeners for each beat's section contained in sections
- */
-// for (let i = 0; i < beatData.length; i++) {
-//   sections[i].addEventListener("click", (event) => press_play(i));
-//   sections[i].addEventListener("mouseenter", (event) => play_hover(i));
-//   sections[i].addEventListener("mouseleave", (event) => play_leave(i));
-// }
-
-
 
 /**
  * ================ Functions ===========================================
  */
+
 // Single event listener on the container
 document.getElementById('featured').addEventListener('click', (event) => {
   const beatDiv = event.target.closest('.beat');
@@ -291,22 +296,12 @@ document.getElementById('featured').addEventListener('click', (event) => {
 });
 
 
-
-/**
- * Scrolls to the desired section of the document
- * @param element the element to scroll to
- */
+// Scrolls to the desired section of the document
 function scroll_to(element){
   element.scrollIntoView({ behavior: 'smooth' });
 }
 
-
-
-
-/**
- * Updates the background color once every 1/fps seconds
- * @param {*} delta 
- */
+// Updates the background color once every 1/fps seconds
 function update_background(delta) {
   body_timer = body_timer + delta;
   if (body_timer >= 1/body_fps) {
