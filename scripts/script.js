@@ -160,7 +160,16 @@ const beatData = [
     page: "ocarina_trap",
     dur: "2:59",
     tags: "Trap"
+  },
 
+  {
+    id: "1.1",
+    title: "2-Man",
+    bpm: 125,
+    image: "pages/2_man/cover.jpeg",
+    page: "2_man",
+    dur: "2:00",
+    tags: "Trap"
   },
 
   {
