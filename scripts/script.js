@@ -182,15 +182,15 @@ const beatData = [
     tags: "EDM"
   },
 
-  {
-    id: "1.1",
-    title: "Born to Trap",
-    bpm: 160,
-    image: "pages/chill_trap/cover.jpg",
-    page: "chill_trap",
-    dur: "2:15",
-    tags: "Trap"
-  },
+  // {
+  //   id: "1.1",
+  //   title: "Born to Trap",
+  //   bpm: 160,
+  //   image: "pages/chill_trap/cover.jpg",
+  //   page: "chill_trap",
+  //   dur: "2:15",
+  //   tags: "Trap"
+  // },
 
   
 
