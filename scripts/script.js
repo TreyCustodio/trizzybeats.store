@@ -142,15 +142,7 @@ class Animated {
  */
 
 const beatData = [
-  {
-    id: "0",
-    title: "Earth's Revival",
-    bpm: 89,
-    image: "pages/earths_revival/cover.png",
-    page: "earths_revival",
-    dur: "2:46",
-    tags: "Video Game"
-  },
+  
 
   {
     id: "1",
@@ -160,6 +152,37 @@ const beatData = [
     page: "ocarina_trap",
     dur: "2:59",
     tags: "Trap"
+  },
+
+  {
+    id: "over1",
+    title: "Overground",
+    bpm: 90,
+    image: "pages/overground/cover.gif",
+    page: "overground",
+    dur: "3:52",
+    tags: "Video Game"
+
+  },
+
+  {
+    id: "over2",
+    title: "Forest of Clouds",
+    bpm: 185,
+    image: "pages/frozen_core/night.png",
+    page: "forest_clouds",
+    dur: "2:35",
+    tags: "Video Game"
+  },
+
+  {
+    id: "1",
+    title: "Earth's Revival",
+    bpm: 89,
+    image: "pages/earths_revival/cover.png",
+    page: "earths_revival",
+    dur: "2:46",
+    tags: "Video Game"
   },
 
   {
@@ -180,6 +203,16 @@ const beatData = [
     page: "edm_1",
     dur: "2:15",
     tags: "EDM"
+  },
+
+  {
+    id: "1.3",
+    title: "Pump Me Up",
+    bpm: 140,
+    image: "pages/pump_full/cover.png",
+    page: "pump_full",
+    dur: "2:48",
+    tags: "Video Game"
   },
 
   // {
@@ -222,16 +255,6 @@ const beatData = [
     image: "pages/biotech/cover.png",
     page: "biotech",
     dur: "1:49",
-    tags: "Video Game"
-  },
-
-  {
-    id: "4",
-    title: "Pump Me Up",
-    bpm: 140,
-    image: "pages/pump_full/cover.png",
-    page: "pump_full",
-    dur: "2:48",
     tags: "Video Game"
   },
 
