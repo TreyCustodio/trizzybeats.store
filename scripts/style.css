@@ -7,6 +7,22 @@
   --border: 2px solid black;
 }
 
+/* ================================= */
+/* ======= Game Elements ======== */
+/* ================================= */
+.yokai {
+    font-size: 24pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.yokai text:hover{
+    color: red;
+}
+
 
 /* ================================= */
 /* ===== Primary Page Elements ===== */
