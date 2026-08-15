@@ -8,13 +8,8 @@
    -->
     <!--Metadata-->
    <head>
-      <link rel="stylesheet" href="style.css">
-      <link rel="icon" type="image/png" href="images/logo.png">
-      <title>Oh, Trizzy stayin' busy?</title>
-
-      <!-- Ad Code -->
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2989723362343697"
-      crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="scripts/style.css">
+      <title>Human Extinction</title>
    </head>
 
 
@@ -25,28 +20,25 @@
 
       <!--Header/Overlay-->
       <header>
-         <div class="overlay" id="over">
+         <div class="overlay">
             <div class = "overlay_home">
                <img src="../images/logo.png">
             </div>
-            
+
             <div class = "overlay_item">
                <!-- <button id="beats">Beats</button> -->
-               <text id = "beats">Beats</text>
+               <text id = "beats" style="color: white">Beats</text>
             </div>
 
             <div class = "overlay_item">
                <!-- <button id="search">Search</button> -->
-               <text id = "search">Search</text>
+               <text id = "search" style="color: white">Search</text>
             </div>
 
             <div class = "overlay_item">
                <!-- <button id="about">About</button> -->
-               <text style="text-decoration: none">About</text>
-               <a id="about" href="https://treycustodio.github.io/"></a>
-
+               <text id = "about" style="color: white">About</text>
             </div>
-
          </div>
 
          <div class="currently_playing" id="currently_playing">
@@ -58,25 +50,34 @@
 
 
       <!--Main-->
-      <main style="color: white;">
+      <main style="color:white">
          
-         <!--  Title -->
+         <!--  Track Info -->
          <div class="name" id="title">
-            Yokai Assassination
+            Human Extinction
          </div>
 
          <div class ="bio" id = "title">
+            Duration: 3:39<br>
+            Bpm: 160<br>
          </div>
-         
-         <iframe
-            class="yokai"
-            src="../games/yokai/"
-            title="Yokai Assassination">
-         </iframe>
+
+         <!-- Audio Controls -->
          
 
+         <div class = "player">
+            <img src="cover.png">
+         </div>
+
+         <div>
+            <img class = "controls" src="play.png" id = "play">
+         </div>
+
+         
+         
+         <!-- Footer -->
          <div style="padding-bottom: 256px"></div>
-         <script src="script.js"></script>
+         <script src="scripts/script.js"></script>
          
       </main>
       

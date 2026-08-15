@@ -145,13 +145,39 @@ const beatData = [
   
 
   {
-    id: "1",
-    title: "Ocarina Trap",
+
+    id: "Ins_17",
+    title: "Human Extinction",
     bpm: 160,
-    image: "pages/ocarina_trap/ocarina.jpg",
-    page: "ocarina_trap",
-    dur: "2:59",
-    tags: "Trap"
+    dur: "3:39",
+    image: "images/ost_mid.png",
+    page: "human_extinction",
+    tags: "Fragments",
+    rank: "goat"
+
+  },
+
+  {
+    id: "2.1",
+    title: "Frozen Core",
+    bpm: 70,
+    image: "images/ost_mid.png",
+    page: "frozen_core",
+    dur: "2:03",
+    tags: "Video Game",
+    rank:"perfect"
+
+  },
+
+  {
+    id: "1",
+    title: "Earth's Revival",
+    bpm: 89,
+    image: "images/ost_mid.png",
+    page: "earths_revival",
+    dur: "2:46",
+    tags: "Video Game",
+    rank: "goat"
   },
 
   {
@@ -161,7 +187,8 @@ const beatData = [
     image: "pages/overground/cover.gif",
     page: "overground",
     dur: "3:52",
-    tags: "Video Game"
+    tags: "Video Game",
+    rank: "woo"
 
   },
 
@@ -172,19 +199,23 @@ const beatData = [
     image: "pages/frozen_core/night.png",
     page: "forest_clouds",
     dur: "2:35",
-    tags: "Video Game"
+    tags: "Video Game",
+    rank: "woo"
   },
+
 
   {
     id: "1",
-    title: "Earth's Revival",
-    bpm: 89,
-    image: "pages/earths_revival/cover.png",
-    page: "earths_revival",
-    dur: "2:46",
-    tags: "Video Game"
+    title: "Ocarina Trap",
+    bpm: 160,
+    image: "pages/ocarina_trap/ocarina.jpg",
+    page: "ocarina_trap",
+    dur: "2:59",
+    tags: "Trap",
+    rank: "woo",
   },
 
+  
   {
     id: "1.1",
     title: "2-Man",
@@ -192,7 +223,8 @@ const beatData = [
     image: "pages/2_man/cover.jpeg",
     page: "2_man",
     dur: "2:00",
-    tags: "Trap"
+    tags: "Trap",
+    rank: "alright"
   },
 
   {
@@ -202,18 +234,20 @@ const beatData = [
     image: "pages/edm_1/cover.png",
     page: "edm_1",
     dur: "2:15",
-    tags: "EDM"
+    tags: "EDM",
+    rank: "alright",
   },
 
-  {
-    id: "1.3",
-    title: "Pump Me Up",
-    bpm: 140,
-    image: "pages/pump_full/cover.png",
-    page: "pump_full",
-    dur: "2:48",
-    tags: "Video Game"
-  },
+  // {
+  //   id: "1.3",
+  //   title: "Pump Me Up",
+  //   bpm: 140,
+  //   image: "pages/pump_full/cover.png",
+  //   page: "pump_full",
+  //   dur: "2:48",
+  //   tags: "Video Game",
+  //   rank: "woo"
+  // },
 
   // {
   //   id: "1.1",
@@ -237,16 +271,7 @@ const beatData = [
   //   tags: "Video Game, Ice"
   // },
 
-  {
-    id: "2.1",
-    title: "Frozen Core",
-    bpm: 70,
-    image: "pages/frozen_core/night.png",
-    page: "frozen_core",
-    dur: "2:03",
-    tags: "Video Game"
-
-  },
+  
 
   {
     id: "3",
@@ -279,7 +304,7 @@ function renderBeats(arr) {
       <text>${beat.title}</text>
       <text>${beat.bpm}</text>
       <text>${beat.dur}</text>
-
+      <img src="images/${beat.rank}.jpg">
     `;
     
     featuredContainer.appendChild(beatDiv);
