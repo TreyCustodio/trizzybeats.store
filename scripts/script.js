@@ -145,7 +145,18 @@ const beatData = [
   
 
   {
+    id: "yokai_01",
+    title: "Cynical Castle",
+    bpm: 145,
+    dur: "4:18",
+    image: "images/yokai.png",
+    page: "cynical_castle",
+    tags: "Yokai",
+    rank: "woo"
 
+  },
+
+  {
     id: "Ins_17",
     title: "Human Extinction",
     bpm: 160,
@@ -160,10 +171,10 @@ const beatData = [
   {
     id: "2.1",
     title: "Frozen Core",
-    bpm: 70,
+    bpm: 90,
     image: "images/ost_mid.png",
     page: "frozen_core",
-    dur: "2:03",
+    dur: "5:18",
     tags: "Video Game",
     rank:"perfect"
 
