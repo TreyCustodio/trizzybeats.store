@@ -284,15 +284,15 @@ const beatData = [
 
   
 
-  {
-    id: "3",
-    title: "Biotech",
-    bpm: 140,
-    image: "pages/biotech/cover.png",
-    page: "biotech",
-    dur: "1:49",
-    tags: "Video Game"
-  },
+  // {
+  //   id: "3",
+  //   title: "Biotech",
+  //   bpm: 140,
+  //   image: "pages/biotech/cover.png",
+  //   page: "biotech",
+  //   dur: "1:49",
+  //   tags: "Video Game"
+  // },
 
 ];
 
